@@ -1,26 +1,291 @@
 @import "tailwindcss";
 
+/* ─── Design tokens ─────────────────────────────────────────────────────────── */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #faf8f4;
+  --foreground: #1c1917;
+
+  /* Soft blue accent */
+  --accent-50: #f0f7ff;
+  --accent-100: #dbeafe;
+  --accent-200: #bfdbfe;
+  --accent-300: #93c5fd;
+  --accent-400: #7eb8f5;
+  --accent-500: #5b9fd4;
+  --accent-600: #4a8bc2;
+  --accent-700: #3b73a8;
+  --accent-800: #2d5a85;
+  --accent-900: #1e4063;
+
+  /* Warm neutral grays */
+  --neutral-50: #fafaf9;
+  --neutral-100: #f5f5f4;
+  --neutral-200: #e7e5e4;
+  --neutral-300: #d6d3d1;
+  --neutral-400: #a8a29e;
+  --neutral-500: #78716c;
+  --neutral-600: #57534e;
+  --neutral-700: #44403c;
+  --neutral-800: #292524;
+  --neutral-900: #1c1917;
+
+  /* Section spacing */
+  --section-sm: 4rem;
+  --section-md: 6rem;
+  --section-lg: 8rem;
+  --section-xl: 10rem;
+
+  /* Border radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px 0 rgb(28 25 23 / 0.04);
+  --shadow-soft: 0 2px 8px -2px rgb(28 25 23 / 0.06);
+  --shadow-md: 0 4px 16px -4px rgb(28 25 23 / 0.08);
+  --shadow-lg: 0 8px 32px -8px rgb(28 25 23 / 0.1);
+  --shadow-xl: 0 16px 48px -12px rgb(28 25 23 / 0.12);
+  --shadow-accent: 0 4px 24px -4px rgb(91 159 212 / 0.25);
+  --shadow-inner-soft: inset 0 1px 2px 0 rgb(28 25 23 / 0.04);
+
+  /* Ambient gradients */
+  --gradient-ambient: radial-gradient(
+    ellipse 80% 60% at 50% -10%,
+    rgb(91 159 212 / 0.12),
+    transparent 70%
+  );
+  --gradient-glow: radial-gradient(
+    circle at 50% 50%,
+    rgb(91 159 212 / 0.08),
+    transparent 65%
+  );
+  --gradient-warm: linear-gradient(
+    180deg,
+    rgb(250 250 249) 0%,
+    rgb(255 255 255) 100%
+  );
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-accent-50: var(--accent-50);
+  --color-accent-100: var(--accent-100);
+  --color-accent-200: var(--accent-200);
+  --color-accent-300: var(--accent-300);
+  --color-accent-400: var(--accent-400);
+  --color-accent-500: var(--accent-500);
+  --color-accent-600: var(--accent-600);
+  --color-accent-700: var(--accent-700);
+  --color-accent-800: var(--accent-800);
+  --color-accent-900: var(--accent-900);
+
+  --color-neutral-50: var(--neutral-50);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-200: var(--neutral-200);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-400: var(--neutral-400);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-600: var(--neutral-600);
+  --color-neutral-700: var(--neutral-700);
+  --color-neutral-800: var(--neutral-800);
+  --color-neutral-900: var(--neutral-900);
+
+  --font-sans: var(--font-plus-jakarta);
+  --font-display: var(--font-plus-jakarta);
+  --font-serif: var(--font-fraunces);
+
+  --spacing-section-sm: var(--section-sm);
+  --spacing-section-md: var(--section-md);
+  --spacing-section-lg: var(--section-lg);
+  --spacing-section-xl: var(--section-xl);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+  --radius-3xl: var(--radius-3xl);
+
+  --shadow-xs: var(--shadow-xs);
+  --shadow-soft: var(--shadow-soft);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-accent: var(--shadow-accent);
+  --shadow-inner-soft: var(--shadow-inner-soft);
+
+  --text-display-2xl: 4.5rem;
+  --text-display-xl: 3.75rem;
+  --text-display-lg: 3rem;
+  --text-display-md: 2.25rem;
+  --text-display-sm: 1.875rem;
+  --text-body-xl: 1.25rem;
+  --text-body-lg: 1.125rem;
+  --text-body-md: 1rem;
+  --text-body-sm: 0.875rem;
+  --text-body-xs: 0.75rem;
+  --text-label: 0.8125rem;
+
+  --leading-display: 1.1;
+  --leading-heading: 1.2;
+  --leading-body: 1.6;
+  --leading-tight: 1.4;
+
+  --tracking-display: -0.03em;
+  --tracking-heading: -0.02em;
+  --tracking-body: -0.01em;
+  --tracking-label: 0.04em;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Base styles ───────────────────────────────────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgb(91 159 212 / 0.2);
+  color: var(--neutral-900);
+}
+
+/* ─── Typography utilities ──────────────────────────────────────────────────── */
+
+.text-display-2xl {
+  font-size: var(--text-display-2xl);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  font-weight: 600;
+}
+
+.text-display-xl {
+  font-size: var(--text-display-xl);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  font-weight: 600;
+}
+
+.text-display-lg {
+  font-size: var(--text-display-lg);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  font-weight: 600;
+}
+
+.text-display-md {
+  font-size: var(--text-display-md);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  font-weight: 600;
+}
+
+.text-display-sm {
+  font-size: var(--text-display-sm);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  font-weight: 600;
+}
+
+.text-body-xl {
+  font-size: var(--text-body-xl);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+}
+
+.text-body-lg {
+  font-size: var(--text-body-lg);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+}
+
+.text-body-md {
+  font-size: var(--text-body-md);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+}
+
+.text-body-sm {
+  font-size: var(--text-body-sm);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-body);
+}
+
+.text-body-xs {
+  font-size: var(--text-body-xs);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-body);
+}
+
+.text-label {
+  font-size: var(--text-label);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-label);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .text-display-2xl {
+    font-size: 2.75rem;
+  }
+  .text-display-xl {
+    font-size: 2.5rem;
+  }
+  .text-display-lg {
+    font-size: 2rem;
+  }
+  .text-display-md {
+    font-size: 1.75rem;
+  }
+}
+
+/* ─── Ambient background motion (CSS fallback) ──────────────────────────────── */
+
+@keyframes ambient-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(2%, -1%) scale(1.02);
+  }
+  66% {
+    transform: translate(-1%, 2%) scale(0.98);
+  }
+}
+
+@keyframes sparkle-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
+}
+
+.animate-ambient-drift {
+  animation: ambient-drift 20s ease-in-out infinite;
+}
+
+.animate-sparkle-pulse {
+  animation: sparkle-pulse 3s ease-in-out infinite;
 }
