@@ -24,9 +24,9 @@ const sizeStyles = {
   lg: {
     wordmark: "text-6xl sm:text-7xl md:text-8xl",
     by: "mx-2.5 text-[0.34em]",
-    tagline: "text-sm sm:text-base",
-    line: "w-12 sm:w-14",
-    gap: "mt-3 gap-4",
+    tagline: "text-xs sm:text-sm md:text-base",
+    line: "w-6 sm:w-10 md:w-14",
+    gap: "mt-3 gap-2 sm:gap-4",
   },
 } as const;
 
@@ -113,7 +113,7 @@ export function Logo({ className, size = "md" }: LogoProps) {
         />
         <span
           className={cn(
-            "font-sans font-medium tracking-[0.22em] text-accent-700 uppercase",
+            "whitespace-nowrap font-sans font-medium tracking-[0.14em] text-accent-700 uppercase sm:tracking-[0.22em]",
             styles.tagline,
           )}
         >
