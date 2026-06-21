@@ -2,6 +2,7 @@
 
 import { Container } from "@/components/layout/Container";
 import { FadeIn } from "@/components/motion";
+import { HostOnboardingBar } from "@/components/hero/HostOnboardingBar";
 import { MeetZeliCard } from "@/components/hero/MeetZeliCard";
 import { cn } from "@/lib/cn";
 import Image from "next/image";
@@ -240,6 +241,10 @@ export function CleaningServicesSection({
             <MeetZeliCard />
           </div>
         </div>
+
+        <FadeIn direction="up" delay={0.2} className="mt-12">
+          <HostOnboardingBar />
+        </FadeIn>
       </Container>
     </section>
   );

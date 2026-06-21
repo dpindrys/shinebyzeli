@@ -11,7 +11,7 @@ type TrustItem = {
   description: string;
 };
 
-function PersonIcon({ className }: { className?: string }) {
+function PhoneIcon({ className }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -21,13 +21,12 @@ function PersonIcon({ className }: { className?: string }) {
       className={className}
       aria-hidden
     >
-      <circle cx="12" cy="8" r="4" />
-      <path d="M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6" />
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
     </svg>
   );
 }
 
-function LeafIcon({ className }: { className?: string }) {
+function ChecklistIcon({ className }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -37,13 +36,15 @@ function LeafIcon({ className }: { className?: string }) {
       className={className}
       aria-hidden
     >
-      <path d="M12 21c-4-4-7-8-7-13a7 7 0 0 1 14 0c0 5-3 9-7 13z" />
-      <path d="M12 21V8" />
+      <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" />
+      <rect x="9" y="3" width="6" height="4" rx="1" />
+      <path d="M9 12l2 2 4-4" />
+      <path d="M9 17h6" />
     </svg>
   );
 }
 
-function PawIcon({ className }: { className?: string }) {
+function UsersIcon({ className }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -53,51 +54,53 @@ function PawIcon({ className }: { className?: string }) {
       className={className}
       aria-hidden
     >
-      <ellipse cx="8" cy="7" rx="2" ry="2.5" />
-      <ellipse cx="16" cy="7" rx="2" ry="2.5" />
-      <ellipse cx="5" cy="12" rx="1.8" ry="2.2" />
-      <ellipse cx="19" cy="12" rx="1.8" ry="2.2" />
-      <path d="M12 11c-2.5 0-4.5 2.5-4.5 5.5 0 2.5 2 4.5 4.5 4.5s4.5-2 4.5-4.5c0-3-2-5.5-4.5-5.5z" />
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
     </svg>
   );
 }
 
-function BadgeIcon({ className }: { className?: string }) {
+function ShieldCheckIcon({ className }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
       strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       className={className}
       aria-hidden
     >
-      <circle cx="12" cy="9" r="5" />
-      <path d="M8.5 13.5 7 21l5-2.5L17 21l-1.5-7.5" />
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      <path d="m9 12 2 2 4-4" />
     </svg>
   );
 }
 
 const TRUST_ITEMS: TrustItem[] = [
   {
-    icon: <PersonIcon className="h-7 w-7" />,
-    title: "Consistent Personal Touch",
-    description: "Dedicated owner-operated service. Secure and caring.",
+    icon: <PhoneIcon className="h-7 w-7" />,
+    title: "Direct Communication",
+    description:
+      "Stay in the loop and work directly with Zeli and her team.",
   },
   {
-    icon: <LeafIcon className="h-7 w-7" />,
-    title: "Eco-Friendly & Certified Products",
-    description: "Safe, premium non-toxic cleaning options.",
+    icon: <ChecklistIcon className="h-7 w-7" />,
+    title: "Transparent Turnovers",
+    description: "Know what's completed before every check-in.",
   },
   {
-    icon: <PawIcon className="h-7 w-7" />,
-    title: "Pet & Kid Safe Methods",
-    description: "Caring, pet-safe and non-toxic cleaning methods.",
+    icon: <UsersIcon className="h-7 w-7" />,
+    title: "Quality Over Quantity",
+    description:
+      "We set a high bar, and we limit the amount of clients we serve to meet it.",
   },
   {
-    icon: <BadgeIcon className="h-7 w-7" />,
-    title: "Satisfaction Guaranteed",
-    description: "Assured. Re-clean guarantee or money-back.",
+    icon: <ShieldCheckIcon className="h-7 w-7" />,
+    title: "Guest-Ready Guarantee",
+    description: "If something isn't right, we'll make it right.",
   },
 ];
 
@@ -133,8 +136,8 @@ export function TrustBar({
         className={cn(
           "grid gap-x-4 gap-y-6 sm:gap-x-6",
           fullWidth
-            ? "grid-cols-2 lg:grid-cols-4"
-            : "grid-cols-2",
+            ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+            : "grid-cols-1 sm:grid-cols-2",
         )}
       >
         {TRUST_ITEMS.map((item) => (

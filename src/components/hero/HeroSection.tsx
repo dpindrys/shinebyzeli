@@ -27,40 +27,21 @@ export function HeroSection() {
         <section className="px-5 pt-10 pb-[20px] sm:px-8">
           <Container>
             <div className="grid gap-y-10 lg:grid-cols-[2fr_3fr] lg:items-start lg:gap-y-8">
-              <div className="flex w-[421px] flex-col text-left">
-                <FadeIn direction="up">
-                  <h2 className="font-sans text-3xl font-semibold leading-tight tracking-tight text-accent-800 sm:text-4xl md:text-5xl">
-                    The gold standard behind great stays.
-                  </h2>
-                </FadeIn>
+              <FadeIn direction="up" className="w-full max-w-[421px]">
+                <h2 className="font-sans text-3xl font-semibold leading-tight tracking-tight text-accent-800 sm:text-4xl md:text-5xl">
+                  The gold standard behind great stays.
+                </h2>
+                <Text.Lg className="mt-5 max-w-md text-neutral-600">
+                  Owner-operated service for Boston-area hosts. Detailed,
+                  dependable, and guest-ready every time.
+                </Text.Lg>
+              </FadeIn>
 
-                <FadeIn direction="up" delay={0.1}>
-                  <Text.Lg className="mt-5 max-w-md text-neutral-600">
-                    Owner-operated service for Boston-area hosts. Detailed,
-                    dependable, and guest-ready every time.
-                  </Text.Lg>
-                </FadeIn>
-
-                <FadeIn direction="up" delay={0.2} className="mt-8">
-                  <ButtonLink
-                    href="#services"
-                    variant="primary"
-                    size="lg"
-                    className="border-2 border-accent-800 font-bold text-white hover:text-white active:text-white"
-                  >
-                    Why hosts choose us
-                    <span aria-hidden className="ml-1 text-white">
-                      →
-                    </span>
-                  </ButtonLink>
-                </FadeIn>
-
-                <FadeIn direction="up" delay={0.25} className="my-8">
-                  <HeroHighlights />
-                </FadeIn>
-              </div>
-
-              <FadeIn direction="up" delay={0.15}>
+              <FadeIn
+                direction="up"
+                delay={0.15}
+                className="w-full lg:col-start-2 lg:row-start-1 lg:row-span-3 lg:max-w-none"
+              >
                 <Image
                   src="/sequence/zeli11.png"
                   alt="Clean home by Zeli"
@@ -70,6 +51,24 @@ export function HeroSection() {
                   className="block h-auto w-full"
                   sizes="(max-width: 1024px) 100vw, 60vw"
                 />
+              </FadeIn>
+
+              <FadeIn direction="up" delay={0.2} className="mt-8 w-full max-w-[421px] lg:mt-0">
+                <ButtonLink
+                  href="#services"
+                  variant="primary"
+                  size="lg"
+                  className="border-2 border-accent-800 font-bold text-white hover:text-white active:text-white"
+                >
+                  Why hosts choose us
+                  <span aria-hidden className="ml-1 text-white">
+                    →
+                  </span>
+                </ButtonLink>
+              </FadeIn>
+
+              <FadeIn direction="up" delay={0.25} className="my-8 w-full max-w-[421px] lg:my-0">
+                <HeroHighlights />
               </FadeIn>
 
               <FadeIn direction="up" delay={0.3} className="col-span-full">
