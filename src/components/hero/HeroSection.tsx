@@ -5,6 +5,7 @@ import { Container } from "@/components/layout/Container";
 import { SiteLayout, SiteMain } from "@/components/layout/SiteLayout";
 import { FadeIn } from "@/components/motion";
 import { BeforeAfterSlider } from "@/components/hero/BeforeAfterSlider";
+import { CleaningServicesSection } from "@/components/hero/CleaningServicesSection";
 import { HeroHighlights } from "@/components/hero/HeroHighlights";
 import { TrustBar } from "@/components/hero/TrustBar";
 import { ButtonLink } from "@/components/ui/Button";
@@ -26,30 +27,28 @@ export function HeroSection() {
         <section className="px-5 pt-10 pb-[20px] sm:px-8">
           <Container>
             <div className="grid gap-y-10 lg:grid-cols-[2fr_3fr] lg:items-start lg:gap-y-8">
-              <div className="flex w-[442px] flex-col text-left">
+              <div className="flex w-[421px] flex-col text-left">
                 <FadeIn direction="up">
                   <h2 className="font-sans text-3xl font-semibold leading-tight tracking-tight text-accent-800 sm:text-4xl md:text-5xl">
-                    It&apos;s not just clean.
-                    <br />
-                    It&apos;s Zeli Clean.
+                    The gold standard behind great stays.
                   </h2>
                 </FadeIn>
 
                 <FadeIn direction="up" delay={0.1}>
                   <Text.Lg className="mt-5 max-w-md text-neutral-600">
-                    Meticulous owner-operated service. Reliable, detailed, and
-                    done right the first time.
+                    Owner-operated service for Boston-area hosts. Detailed,
+                    dependable, and guest-ready every time.
                   </Text.Lg>
                 </FadeIn>
 
                 <FadeIn direction="up" delay={0.2} className="mt-8">
                   <ButtonLink
-                    href="#quote"
+                    href="#services"
                     variant="primary"
                     size="lg"
                     className="border-2 border-accent-800 font-bold text-white hover:text-white active:text-white"
                   >
-                    See my prices
+                    How we do short-term turnovers
                     <span aria-hidden className="ml-1 text-white">
                       →
                     </span>
@@ -80,10 +79,10 @@ export function HeroSection() {
               <FadeIn direction="up" delay={0.35} className="col-span-full mt-6">
                 <div className="mb-8 text-center">
                   <h3 className="font-sans text-2xl font-semibold tracking-tight text-accent-800 sm:text-3xl">
-                    Real results. Real clean.
+                    Before and aft<em className="italic">ahhh</em>.
                   </h3>
                   <Text.Md className="mt-2 text-neutral-600">
-                    See the difference a Zeli makes.
+                    A five-star Boston-area stay start with a spotless welcome.
                   </Text.Md>
                 </div>
 
@@ -107,6 +106,8 @@ export function HeroSection() {
             </div>
           </Container>
         </section>
+
+        <CleaningServicesSection />
       </SiteMain>
     </SiteLayout>
   );

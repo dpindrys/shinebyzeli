@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/cn";
 import Image from "next/image";
-import { useCallback, useRef, useState, type PointerEvent } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type PointerEvent } from "react";
 
 type BeforeAfterSliderProps = {
   beforeSrc: string;
@@ -24,8 +24,19 @@ export function BeforeAfterSlider({
   className,
 }: BeforeAfterSliderProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const afterLabelRef = useRef<HTMLSpanElement>(null);
   const [position, setPosition] = useState(initialPosition);
+  const [hideAfterLabel, setHideAfterLabel] = useState(false);
   const isDragging = useRef(false);
+
+  const updateLabelVisibility = useCallback(() => {
+    const container = containerRef.current;
+    const afterLabel = afterLabelRef.current;
+    if (!container || !afterLabel) return;
+
+    const clipEdge = (position / 100) * container.offsetWidth;
+    setHideAfterLabel(clipEdge >= afterLabel.offsetLeft - 2);
+  }, [position]);
 
   const updatePosition = useCallback((clientX: number) => {
     const container = containerRef.current;
@@ -52,6 +63,15 @@ export function BeforeAfterSlider({
     event.currentTarget.releasePointerCapture(event.pointerId);
   };
 
+  useLayoutEffect(() => {
+    updateLabelVisibility();
+  }, [updateLabelVisibility]);
+
+  useEffect(() => {
+    window.addEventListener("resize", updateLabelVisibility);
+    return () => window.removeEventListener("resize", updateLabelVisibility);
+  }, [updateLabelVisibility]);
+
   return (
     <div
       ref={containerRef}
@@ -75,8 +95,18 @@ export function BeforeAfterSlider({
         draggable={false}
       />
 
+      <span
+        ref={afterLabelRef}
+        className={cn(
+          "pointer-events-none absolute right-3 bottom-3 z-[5] text-[0.65rem] font-semibold tracking-[0.14em] text-white uppercase drop-shadow-[0_1px_3px_rgb(0_0_0_/_0.55)] transition-opacity duration-150 sm:text-xs",
+          hideAfterLabel && "opacity-0",
+        )}
+      >
+        After
+      </span>
+
       <div
-        className="absolute inset-0 overflow-hidden rounded-xl"
+        className="absolute inset-0 z-[6] overflow-hidden rounded-xl"
         style={{
           clipPath: `polygon(0 0, ${position}% 0, ${position}% 100%, 0 100%)`,
         }}
@@ -89,6 +119,10 @@ export function BeforeAfterSlider({
           sizes="(max-width: 640px) 100vw, 50vw"
           draggable={false}
         />
+
+        <span className="pointer-events-none absolute bottom-3 left-3 z-[7] text-[0.65rem] font-semibold tracking-[0.14em] text-white uppercase drop-shadow-[0_1px_3px_rgb(0_0_0_/_0.55)] sm:text-xs">
+          Before
+        </span>
       </div>
 
       <div

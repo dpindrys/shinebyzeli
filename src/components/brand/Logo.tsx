@@ -8,71 +8,116 @@ export type LogoProps = {
 
 const sizeStyles = {
   sm: {
-    shine: "text-4xl sm:text-5xl",
-    byline: "text-sm sm:text-base",
-    sparkle: "h-4 w-4 sm:h-5 sm:w-5",
-    sparkleOffset: "-right-5 -top-1 sm:-right-6 sm:top-0",
+    wordmark: "text-4xl sm:text-5xl",
+    by: "mx-1.5 text-[0.34em]",
+    tagline: "text-[0.62rem] sm:text-xs",
     line: "w-8 sm:w-10",
+    gap: "mt-2 gap-3",
   },
   md: {
-    shine: "text-5xl sm:text-6xl md:text-7xl",
-    byline: "text-base sm:text-lg",
-    sparkle: "h-5 w-5 sm:h-6 sm:w-6",
-    sparkleOffset: "-right-6 -top-1 sm:-right-8 sm:top-0",
+    wordmark: "text-5xl sm:text-6xl md:text-7xl",
+    by: "mx-2 text-[0.34em]",
+    tagline: "text-xs sm:text-sm",
     line: "w-10 sm:w-12",
+    gap: "mt-2.5 gap-3",
   },
   lg: {
-    shine: "text-6xl sm:text-7xl md:text-8xl",
-    byline: "text-lg sm:text-xl",
-    sparkle: "h-6 w-6 sm:h-7 sm:w-7",
-    sparkleOffset: "-right-7 top-0 sm:-right-10 sm:top-1",
+    wordmark: "text-6xl sm:text-7xl md:text-8xl",
+    by: "mx-2.5 text-[0.34em]",
+    tagline: "text-sm sm:text-base",
     line: "w-12 sm:w-14",
+    gap: "mt-3 gap-4",
   },
-};
+} as const;
+
+function FloatingSparkle({
+  className,
+  color = "text-yellow-400",
+}: {
+  className?: string;
+  color?: string;
+}) {
+  return (
+    <SparkleIcon
+      className={cn(
+        "pointer-events-none absolute h-[0.3em] w-[0.3em]",
+        color,
+        className,
+      )}
+    />
+  );
+}
+
+function SparkleOverDot({ color = "text-amber-400" }: { color?: string }) {
+  return (
+    <FloatingSparkle
+      className="-top-[0.1em] left-1/2 -translate-x-1/2"
+      color={color}
+    />
+  );
+}
 
 export function Logo({ className, size = "md" }: LogoProps) {
   const styles = sizeStyles[size];
 
   return (
     <div className={cn("flex flex-col items-center", className)}>
-      <div className="relative inline-block">
-        <h1
-          className={cn(
-            "font-serif font-semibold tracking-tight text-accent-800",
-            styles.shine,
-          )}
-        >
-          Shine
-        </h1>
-        <div
-          className={cn(
-            "absolute flex items-center gap-0.5",
-            styles.sparkleOffset,
-          )}
-          aria-hidden
-        >
-          <SparkleIcon className={cn(styles.sparkle, "text-amber-400")} />
-          <SparkleIcon
-            className={cn(styles.sparkle, "mt-2 text-yellow-400 opacity-90")}
+      <h1
+        className={cn(
+          "inline-flex items-baseline font-serif font-semibold tracking-tight text-accent-800",
+          styles.wordmark,
+        )}
+      >
+        <span className="relative inline-flex items-baseline">
+          <span>Sh</span>
+          <span className="relative inline-block w-[0.3em] text-center">
+            i
+            <SparkleOverDot color="text-amber-400" />
+          </span>
+          <span>ne</span>
+          <FloatingSparkle
+            className="-top-[0.45em] right-[0.08em]"
+            color="text-amber-500"
           />
-          <SparkleIcon
-            className={cn(styles.sparkle, "text-amber-500 opacity-95")}
-          />
-        </div>
-      </div>
+        </span>
 
-      <div className="mt-1 flex items-center gap-3">
+        <span className={cn("relative font-normal", styles.by)}>
+          by
+          <FloatingSparkle
+            className="-top-[0.95em] left-[0.05em]"
+            color="text-yellow-400"
+          />
+        </span>
+
+        <span className="relative inline-flex items-baseline">
+          <span>Z</span>
+          <span className="relative inline-block">
+            e
+            <FloatingSparkle
+              className="-top-[0.55em] left-[0.15em]"
+              color="text-amber-400"
+            />
+          </span>
+          <span>l</span>
+          <span className="relative inline-block w-[0.3em] text-center">
+            i
+            <SparkleOverDot color="text-yellow-400" />
+          </span>
+        </span>
+      </h1>
+
+      <div className={cn("flex w-full items-center justify-center", styles.gap)}>
         <span
           aria-hidden
           className={cn("h-px bg-accent-300", styles.line)}
         />
         <span
           className={cn(
-            "font-sans font-medium tracking-wide text-accent-700",
-            styles.byline,
+            "font-sans font-medium tracking-[0.22em] text-accent-700 uppercase",
+            styles.tagline,
           )}
         >
-          by Zeli
+          Cleaning Services
         </span>
         <span
           aria-hidden
