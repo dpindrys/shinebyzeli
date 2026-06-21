@@ -48,7 +48,7 @@ export function HeroSection() {
                     size="lg"
                     className="border-2 border-accent-800 font-bold text-white hover:text-white active:text-white"
                   >
-                    How we do short-term turnovers
+                    Why hosts choose us
                     <span aria-hidden className="ml-1 text-white">
                       →
                     </span>
