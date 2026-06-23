@@ -6,6 +6,7 @@ import { SiteLayout, SiteMain } from "@/components/layout/SiteLayout";
 import { FadeIn } from "@/components/motion";
 import { BeforeAfterSlider } from "@/components/hero/BeforeAfterSlider";
 import { CleaningServicesSection } from "@/components/hero/CleaningServicesSection";
+import { FinalCTASection } from "@/components/hero/FinalCTASection";
 import { HeroHighlights } from "@/components/hero/HeroHighlights";
 import { TrustBar } from "@/components/hero/TrustBar";
 import { ButtonLink } from "@/components/ui/Button";
@@ -48,20 +49,15 @@ export function HeroSection() {
                   width={1536}
                   height={1024}
                   priority
-                  className="block h-auto w-full"
+                  className="block h-auto w-full max-w-[335px] lg:max-w-none"
                   sizes="(max-width: 1024px) 100vw, 60vw"
                 />
               </FadeIn>
 
               <FadeIn direction="up" delay={0.2} className="mt-8 w-full max-w-[421px] lg:mt-0">
-                <ButtonLink
-                  href="#services"
-                  variant="primary"
-                  size="lg"
-                  className="border-2 border-accent-800 font-bold text-white hover:text-white active:text-white"
-                >
+                <ButtonLink href="#services" variant="primary" size="lg">
                   Why hosts choose us
-                  <span aria-hidden className="ml-1 text-white">
+                  <span aria-hidden className="ml-1">
                     →
                   </span>
                 </ButtonLink>
@@ -107,6 +103,7 @@ export function HeroSection() {
         </section>
 
         <CleaningServicesSection />
+        <FinalCTASection />
       </SiteMain>
     </SiteLayout>
   );

@@ -5,9 +5,11 @@ import { motionTokens } from "@/lib/motion";
 import { motion, type HTMLMotionProps } from "framer-motion";
 import { forwardRef } from "react";
 
+const primaryButtonStyles =
+  "cursor-pointer border-2 border-accent-800 bg-accent-500 font-bold !text-white shadow-soft hover:bg-accent-600 hover:!text-white hover:shadow-accent active:bg-accent-700 active:!text-white visited:!text-white focus:!text-white focus-visible:!text-white [&_*]:!text-inherit";
+
 const variantStyles = {
-  primary:
-    "bg-accent-500 text-white shadow-soft hover:bg-accent-600 hover:shadow-accent active:bg-accent-700",
+  primary: primaryButtonStyles,
   secondary:
     "bg-neutral-100 text-neutral-800 hover:bg-neutral-200 active:bg-neutral-300",
   outline:
@@ -46,7 +48,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           ease: motionTokens.easing.smooth,
         }}
         className={cn(
-          "inline-flex items-center justify-center font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+          "inline-flex cursor-pointer items-center justify-center transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
           variantStyles[variant],
           sizeStyles[size],
           className,
@@ -79,7 +81,7 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
           ease: motionTokens.easing.smooth,
         }}
         className={cn(
-          "inline-flex items-center justify-center font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-400 focus-visible:ring-offset-2",
+          "inline-flex cursor-pointer items-center justify-center transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-400 focus-visible:ring-offset-2",
           variantStyles[variant],
           sizeStyles[size],
           className,

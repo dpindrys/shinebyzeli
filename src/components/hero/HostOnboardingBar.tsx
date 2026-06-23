@@ -1,6 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/cn";
+import handshakeIcon from "../../../assets/handshake.png";
+import Image from "next/image";
 import type { ReactNode } from "react";
 
 type OnboardingItem = {
@@ -20,26 +22,6 @@ function HomeIcon({ className }: { className?: string }) {
       aria-hidden
     >
       <path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5z" />
-    </svg>
-  );
-}
-
-function HandshakeIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden
-    >
-      <path d="m11 17-2-2a2.83 2.83 0 0 1 0-4l1-1a2.83 2.83 0 0 1 4 0l1 1" />
-      <path d="M8.5 14.5 7 13" />
-      <path d="m13 17 2-2a2.83 2.83 0 0 0 0-4l-1-1a2.83 2.83 0 0 0-4 0l-1 1" />
-      <path d="M15.5 14.5 17 13" />
     </svg>
   );
 }
@@ -67,10 +49,17 @@ const ONBOARDING_ITEMS: OnboardingItem[] = [
       "We're accepting a limited number of new Boston-area hosts for recurring turnover service.",
   },
   {
-    icon: <HandshakeIcon className="h-7 w-7" />,
-    title: "Our Onboarding Process",
+    icon: (
+      <Image
+        src={handshakeIcon}
+        alt=""
+        className="h-7 w-7 object-contain"
+        aria-hidden
+      />
+    ),
+    title: "Building your service plan",
     description:
-      "We'll learn about your property, turnover schedule, and hosting needs to create a service plan that works for you.",
+      "We'll learn about your property and turnover needs to create a service plan that works for you.",
   },
   {
     icon: <PhoneIcon className="h-7 w-7" />,
